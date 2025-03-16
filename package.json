@@ -1,0 +1,39 @@
+{
+  "name": "duty-schedule-system",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "rimraf .next out",
+    "prebuild": "npm run clean",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\""
+  },
+  "dependencies": {
+    "@types/react-big-calendar": "^1.16.1",
+    "date-fns": "^3.6.0",
+    "next": "^14.1.0",
+    "react": "^18",
+    "react-big-calendar": "^1.17.1",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@eslint/config-array": "^0.19.2",
+    "@eslint/object-schema": "^2.1.6",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.1.0",
+    "glob": "^11.0.1",
+    "lru-cache": "^11.0.2",
+    "postcss": "^8",
+    "prettier": "^3.2.5",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
