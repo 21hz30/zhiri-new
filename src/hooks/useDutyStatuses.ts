@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { dutyStatuses } from '@/data/dutyStatus';
-import { DutyStatus } from '@/types';
+import { DutyStatus } from '@/types/index';
 
 export const useDutyStatuses = (date: Date) => {
   const [statuses, setStatuses] = useState<DutyStatus[]>([]);

@@ -1,4 +1,4 @@
-import { Admin } from '@/types';
+import { Admin } from '@/types/index';
 
 export const rootAdmin: Admin = {
   username: 'ZRWY',

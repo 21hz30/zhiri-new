@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { groups } from '@/data/groups';
-import { AttendanceStatus, STATUS_COLORS } from '@/types';
+import { AttendanceStatus, STATUS_COLORS } from '@/types/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import RecordDetailModal from '@/components/RecordDetailModal';

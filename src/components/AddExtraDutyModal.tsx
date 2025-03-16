@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import { groups } from '@/data/groups';
+import { Member, Group } from '@/types/index';
 
 interface AddExtraDutyModalProps {
   isOpen: boolean;
@@ -41,8 +42,8 @@ const AddExtraDutyModal = ({
               className="w-full border p-2 rounded"
             >
               <option value="">请选择</option>
-              {groups.map((group) =>
-                group.members.map((member) => (
+              {groups.map((group: Group) =>
+                group.members.map((member: Member) => (
                   <option key={member.id} value={member.id}>
                     {group.name} - {member.name}
                   </option>

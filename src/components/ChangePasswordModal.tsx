@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Admin } from '@/types';
+import { Admin } from '@/types/index';
 
 interface ChangePasswordModalProps {
   isOpen: boolean;

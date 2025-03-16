@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { format, isSameDay, isWithinInterval, startOfMonth, endOfMonth, eachDayOfInterval, addDays, getDay } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import { useDutyStatuses } from '@/hooks/useDutyStatuses';
-import { Group, Member, AttendanceStatus } from '@/types';
+import { Group, Member, AttendanceStatus } from '@/types/index';
 import { groups } from '@/data/groups';
 
 // 添加 Props 接口定义

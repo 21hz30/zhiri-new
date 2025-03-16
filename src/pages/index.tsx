@@ -4,7 +4,7 @@ import { format, eachWeekOfInterval, isWeekend, addDays, startOfMonth, endOfMont
 import { zhCN } from 'date-fns/locale';
 import AttendanceModal from '@/components/AttendanceModal';
 import CalendarView from '@/components/CalendarView';
-import { AttendanceStatus, STATUS_COLORS, Member } from '@/types';
+import { AttendanceStatus, STATUS_COLORS, Member } from '@/types/index';
 import Link from 'next/link';
 import LoginModal from '@/components/LoginModal';
 import AddExtraDutyModal from '@/components/AddExtraDutyModal';
@@ -405,7 +405,7 @@ const Home = () => {
   };
 
   // 添加处理全体缺勤的函数
-  const handleGroupAbsent = (date: Date, members: Array<{ id: string; name: string }>) => {
+  const handleGroupAbsent = (date: Date, members: Array<Member & { isExtra?: boolean }>) => {
     const dateStr = date.toISOString();
     
     // 为每个成员创建缺勤记录
@@ -423,7 +423,7 @@ const Home = () => {
   };
 
   // 添加处理重大活动的函数
-  const handleImportantEvent = (date: Date, members: Array<{ id: string; name: string }>) => {
+  const handleImportantEvent = (date: Date, members: Array<Member & { isExtra?: boolean }>) => {
     const dateStr = date.toISOString();
     
     // 为每个成员创建重大活动记录
@@ -661,7 +661,7 @@ const Home = () => {
                       .filter(Boolean);
 
                     const regularMembers = group.members.map(member => ({ ...member, isExtra: false }));
-                    const allMembers = [...regularMembers, ...extraMembers];
+                    const allMembers = [...regularMembers, ...extraMembers].filter((member): member is (Member & { isExtra: boolean }) => member !== null);
 
                     // 添加代指和换值信息的显示
                     return (
@@ -683,14 +683,14 @@ const Home = () => {
                           {isAdmin && (
                             <div className="flex gap-1">
                               <button
-                                onClick={() => handleGroupAbsent(date, allMembers.filter((m): m is Member => m !== undefined))}
+                                onClick={() => handleGroupAbsent(date, allMembers)}
                                 className="px-2 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600"
                                 title="全体缺勤"
                               >
                                 缺
                               </button>
                               <button
-                                onClick={() => handleImportantEvent(date, allMembers.filter((m): m is Member => m !== undefined))}
+                                onClick={() => handleImportantEvent(date, allMembers)}
                                 className="px-2 py-1 text-xs bg-purple-500 text-white rounded hover:bg-purple-600"
                                 title="重大活动"
                               >

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Admin } from '@/types';
+import { Admin } from '@/types/index';
 
 interface LoginModalProps {
   isOpen: boolean;

@@ -1,4 +1,4 @@
-import { DutyStatus } from '@/types';
+import { DutyStatus } from '@/types/index';
 import { dutyStatuses } from '@/data/dutyStatus';
 
 export const addDutyStatus = (status: DutyStatus) => {

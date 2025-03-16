@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DutyStatus } from '@/types';
+import { DutyStatus } from '@/types/index';
 
 export const AdminDutyForm = ({ memberId, date, onSubmit }: {
   memberId: string;

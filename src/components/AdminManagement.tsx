@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Admin } from '@/types';
+import { Admin } from '@/types/index';
 import { addAdmin, removeAdmin, getAllAdmins } from '@/services/adminService';
 
 export const AdminManagement = () => {

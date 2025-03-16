@@ -140,12 +140,69 @@ src/
 
 最简单的部署方式，特别适合 Next.js 项目：
 
-1. 在 [Vercel](https://vercel.com) 注册账号
+1. 在 [Vercel](https://vercel.com) 注册账号并登录
 2. 将代码推送到 GitHub 仓库
-3. 在 Vercel 中导入该 GitHub 仓库
-4. Vercel 会自动部署，并提供一个域名
+   ```bash
+   git add .
+   git commit -m "准备部署"
+   git push origin master   # 或者 main，取决于你的默认分支
+   ```
+3. 在 Vercel 控制面板中点击 "New Project"
+4. 导入你的 GitHub 仓库
+5. 配置部署设置:
+   - Framework Preset: Next.js
+   - Build Command: 保持默认 (`npm run build`)
+   - Output Directory: 保持默认 (`.next`)
+   - Install Command: `npm install`
+6. 点击 "Deploy" 按钮
+7. Vercel 会自动构建和部署项目，完成后会提供一个域名
 
-### 2. 自有服务器部署
+如果需要绑定自定义域名:
+1. 在项目设置中找到 "Domains" 选项
+2. 添加你的自定义域名
+3. 按照提示在你的域名服务商处配置DNS记录
+
+#### Vercel部署常见问题
+
+1. **构建失败**
+   - 确保项目能在本地成功构建 (`npm run build`)
+   - 检查TypeScript错误，修复所有类型错误
+   - 确保导入路径正确（区分大小写）
+
+2. **路径问题**
+   - 使用相对路径或以`/`开头的绝对路径
+   - 确保引用的文件和目录名称与实际文件系统大小写完全匹配
+
+3. **环境变量**
+   - 如果使用了环境变量，确保在Vercel项目设置中添加了相应的环境变量
+
+4. **API路由问题**
+   - 如果在开发环境中使用了API路由，确保在生产环境中也能正常工作
+   - API路由在Vercel上会自动转换为Serverless Functions
+
+5. **浏览器缓存问题**
+   - 部署后如果看到旧内容，尝试清除浏览器缓存或使用无痕模式访问
+
+### 2. 静态文件部署 (Github Pages, Nginx, Apache等)
+
+如果需要将项目部署为静态网站：
+
+1. 修改 `next.config.js` 文件，将 `output: 'standalone'` 改为 `output: 'export'`
+
+2. 构建并导出项目
+```bash
+npm run build
+```
+
+3. 生成的静态文件位于 `out` 目录中，可以直接部署到任何静态网站托管服务
+
+4. 对于 GitHub Pages:
+   - 将 `out` 目录中的内容推送到 gh-pages 分支
+   - 或使用 GitHub Actions 自动部署
+
+5. 对于其他静态文件服务器 (如 Nginx)，直接将 `out` 目录中的文件复制到网站根目录
+
+### 3. 自有服务器部署
 
 1. 构建项目
 ```bash

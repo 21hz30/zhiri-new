@@ -1,3 +1,3 @@
-import { DutyStatus } from '@/types';
+import { DutyStatus } from '@/types/index';
 
 export const dutyStatuses: DutyStatus[] = []; 

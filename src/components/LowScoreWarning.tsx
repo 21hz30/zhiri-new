@@ -1,4 +1,4 @@
-import { AttendanceStatus, Group } from '@/types';
+import { AttendanceStatus, Group } from '@/types/index';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 

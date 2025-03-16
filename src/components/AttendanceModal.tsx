@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { AttendanceStatus } from '@/types';
+import { AttendanceStatus } from '@/types/index';
 import { groups } from '@/data/groups';
 
 interface AttendanceModalProps {

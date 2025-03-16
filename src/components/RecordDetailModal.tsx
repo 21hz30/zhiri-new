@@ -1,4 +1,4 @@
-import { AttendanceStatus, STATUS_COLORS } from '@/types';
+import { AttendanceStatus, STATUS_COLORS } from '@/types/index';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 

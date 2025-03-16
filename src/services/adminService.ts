@@ -1,4 +1,4 @@
-import { Admin } from '@/types';
+import { Admin } from '@/types/index';
 import { admins, rootAdmin } from '@/data/admins';
 
 // 从 localStorage 加载管理员数据

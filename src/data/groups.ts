@@ -1,4 +1,4 @@
-import { Group } from '@/types';
+import { Group } from '@/types/index';
 
 // 定义人员数据
 const MEMBERS_DATA = [
