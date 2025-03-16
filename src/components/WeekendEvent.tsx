@@ -2,8 +2,16 @@ import { format } from 'date-fns';
 import { groups } from '@/data/groups';
 import { Member } from '@/types/index';
 
+// 定义事件类型
+interface CalendarEvent {
+  start: Date;
+  end: Date;
+  title: string;
+  [key: string]: any;
+}
+
 interface WeekendEventProps {
-  event: any;
+  event: CalendarEvent;
   isAdmin: boolean;
   extraDutyMembers?: Array<{ memberId: string; date: string }>;
   onAddExtraDuty?: (date: Date) => void;

@@ -63,6 +63,26 @@ interface ExtraMemberDetail {
   } | undefined;
 }
 
+// 修改CalendarEvent接口定义，使其兼容实际使用的事件对象
+interface CalendarEvent {
+  id: string;
+  title: string;
+  start: Date;
+  end: Date;
+  type?: 'duty' | 'weekend' | 'holiday'; // 将type改为可选属性
+  resource?: string; // 添加resource字段
+  allDay?: boolean; // 添加allDay字段
+  groupId?: string;
+  groupName?: string;
+  group?: any; // 添加group字段
+  weekStart?: Date; // 添加weekStart字段
+  members?: Array<{
+    id: string;
+    name: string;
+  }>;
+  [key: string]: any; // 允许其他属性
+}
+
 const CalendarView = ({
   dutySchedule,
   attendanceRecords,
@@ -112,7 +132,7 @@ const CalendarView = ({
 
   const allEvents = [...calendarEvents, ...weekendEvents];
 
-  const eventStyleGetter = (event: any) => {
+  const eventStyleGetter = (event: CalendarEvent) => {
     if (event.resource === 'duty') {
       return {
         style: {

@@ -9,8 +9,22 @@ interface ExtraDutyMember {
   date: string;
 }
 
+// 定义事件类型
+interface CalendarEvent {
+  id: string;
+  title: string;
+  start: Date;
+  end: Date;
+  type: string;
+  groupId?: string;
+  groupName?: string;
+  members?: Member[];
+  resource?: string;
+  [key: string]: any; // 允许其他属性
+}
+
 interface CustomEventProps {
-  event: any;
+  event: CalendarEvent;
   isAdmin: boolean;
   onUpdateSchedule?: (weekStart: Date, newGroupId: string) => void;
   extraDutyMembers?: ExtraDutyMember[];
@@ -51,9 +65,8 @@ const CustomEvent = ({
     }
   };
 
-  const handleMemberClick = (e: React.MouseEvent, member: any) => {
-    e.stopPropagation();
-    // 这里可以添加成员点击的处理逻辑
+  const handleMemberClick = (e: React.MouseEvent, member: Member) => {
+    // ... existing code ...
   };
 
   // 按日期分组额外值日人员
@@ -113,7 +126,7 @@ const CustomEvent = ({
       </div>
       
       <div className="space-y-1 flex-grow overflow-auto text-xs">
-        {event.group.members.map((member: any) => (
+        {event.group.members.map((member: Member) => (
           <div 
             key={member.id}
             className="bg-gray-100 p-1 rounded hover:bg-gray-200 transition-colors"

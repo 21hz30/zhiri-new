@@ -51,6 +51,9 @@ const AttendanceModal = ({
     setSubstitutionCount(records.length);
   }, [member.id, attendanceRecords]);
 
+  // 在组件顶部添加类型定义
+  type StatusType = 'present' | 'absent' | 'fail' | 'pending';
+
   if (!isOpen) return null;
 
   const handleSave = () => {
@@ -121,7 +124,7 @@ const AttendanceModal = ({
               </label>
               <select
                 value={status}
-                onChange={(e) => setStatus(e.target.value as any)}
+                onChange={(e) => setStatus(e.target.value as StatusType)}
                 className="w-full border rounded-md p-2"
               >
                 <option value="present">已到</option>
